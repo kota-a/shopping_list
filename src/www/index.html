@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src gap: 'unsafe-inline' *">
+        <!--
+            <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>Shopping List</title>
+    </head>
+    <body>
+        <div class="header">
+            <span class="control_buttons">
+                <img id="trash" class="control_button"  src="img/trash.png"></img>
+                <img id="create" class="control_button"  src="img/create.png"></img>
+                <img id="reload" class="control_button"  src="img/reload.png"></img>
+            </span>
+        </div>
+        <div class="body">
+            <div id="item_template">
+                <div class="item">
+                    <input type="checkbox" class="cb_item_state">
+                    <label class="cb_item_state_design"></label>
+                    <div class="item_body">
+                        <div class="item_name"></div>
+                        <div class="item_num"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="items" id="items">
+            </div>
+            <img id="reloading_img" src="img/reload.png"></img>
+            <dialog id="create_menu" >
+                <div id="dialog_body">
+                    <div class="create_item_row">
+                        <div class="create_item_title">買うもの</div><input id="create_item_name" class="create_item_val" type="text">
+                    </div>
+                    <div class="create_item_row">
+                        <div class="create_item_title">買う数</div><input id="create_item_num" class="create_item_val" type="text">
+                    </div>
+                    <div class="create_item_row dialog_buttons">
+                        <button id="create_ok" class="dialog_button">OK</button>
+                        <button id="create_cancel" class="dialog_button">CANCEL</button>
+                    </div>
+                </div>
+            </dialog>
+            <dialog id="trash_confirm">
+                <div id="dialog_body">
+                    <div class="create_item_row">
+                        <span class="trash_confirm_message">チェック済みのアイテムを完全に削除します。<br>よろしいですか？</span>
+                    </div>
+                    <div class="create_item_row dialog_buttons">
+                        <button id="trash_confirm_ok" class="dialog_button">OK</button>
+                        <button id="trash_confirm_cancel" class="dialog_button">CANCEL</button>
+                    </div>
+                </div>
+            </dialog>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/lib/jquery-3.5.0.min.js"></script>
+        <script type="text/javascript" src="js/redmine.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
